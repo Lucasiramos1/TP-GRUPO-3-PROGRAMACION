@@ -29,3 +29,14 @@ No se encontró esquema SQL, migración ni configuración de base de datos propi
 ## Docker
 
 No se encontraron `Dockerfile`, archivos Compose (`docker-compose.yml`/`yaml` o `compose.yml`/`yaml`) ni archivos SQL dentro del repositorio. No hay evidencia de un flujo Docker o de una base relacional autoalojada que se pueda documentar.
+
+## Despliegue en Render
+
+[render.yaml](../render.yaml) define dos servicios respaldados por la arquitectura del repositorio:
+
+- `consulir-api`: servicio Node con `rootDir: backend`, `npm ci` para build, `npm start` para ejecución y `/health` como health check.
+- `consulir-web`: sitio estático que ejecuta `npm ci && npm run build` en la raíz y publica `dist/`. Su rewrite de rutas dirige las rutas SPA a `/index.html`.
+
+El frontend recibe `VITE_API_URL` de `RENDER_EXTERNAL_URL` del servicio backend. Las variables Supabase y `FRONTEND_URL` se solicitan manualmente en Render; son valores específicos del proyecto y no se incluyen en el repositorio. `FRONTEND_URL` debe ser el origen público HTTPS del sitio estático para que el CORS configurado en [backend/server.js](../backend/server.js) permita al navegador acceder al backend.
+
+Vite incorpora las variables `VITE_*` durante el build del sitio estático. Si se actualizan, es necesario volver a construir y desplegar el frontend. El Blueprint no crea una base de datos: la autenticación depende de un proyecto Supabase externo ya configurado.

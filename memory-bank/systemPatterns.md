@@ -32,3 +32,9 @@ También existe [src/lib/supabaseClient.js](../src/lib/supabaseClient.js), que c
 ## Dashboard y protección
 
 [src/routes/AppRouter.jsx](../src/routes/AppRouter.jsx) declara `/dashboard` con [src/routes/ProtectedRoute.jsx](../src/routes/ProtectedRoute.jsx), pero no está conectado desde `src/main.jsx` ni desde `src/App.jsx`. Además, el guard usa el valor temporal fijo `isAuthenticated = true`. Este patrón no implementa autorización real y no debe considerarse una protección de datos.
+
+## Despliegue en Render
+
+[render.yaml](../render.yaml) mantiene los dos procesos como servicios independientes: el sitio estático construye Vite desde el directorio raíz y publica `dist/`; el servicio Node usa `backend/` como raíz y arranca con el script `npm start`. El sitio recibe la URL HTTPS del backend a través de la referencia `RENDER_EXTERNAL_URL` en `VITE_API_URL`; el backend permite el origen del sitio mediante `FRONTEND_URL`.
+
+El rewrite del sitio estático envía rutas que no correspondan a archivos publicados a `index.html`, para que React Router procese las rutas del cliente. El health check usa el endpoint implementado `GET /health`. Supabase es una dependencia externa, no una base de datos creada por el Blueprint.
