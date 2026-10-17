@@ -1,4 +1,6 @@
+
 services:
+  # BACKEND - API NODE.JS
   - type: web
     name: consulir-api
     plan: free
@@ -15,10 +17,12 @@ services:
       - key: SUPABASE_SERVICE_ROLE_KEY
         sync: false
 
-staticSites:
-  - name: consulir-web
+  # FRONTEND - VITE
+  - type: web
+    name: consulir-web
+    runtime: static
     buildCommand: npm ci && npm run build
-    publishPath: dist
+    staticPublishPath: dist
     routes:
       - type: rewrite
         source: /*
