@@ -1,0 +1,2 @@
+Fuente de contenido: revisión local del repositorio Consulir App (README.md y código fuente en src/), realizada el 28/08/2026.
+No se emplearon fuentes ni activos externos.

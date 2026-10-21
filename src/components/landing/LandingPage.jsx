@@ -1,4 +1,5 @@
 // src/components/landing/LandingPage.jsx
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import HeroSection from './HeroSection';
@@ -7,6 +8,7 @@ import InfoCard from './InfoCard';
 import SecurityCard from './SecurityCard';
 import StatsBar from './StatsBar';
 import Footer from './Footer';
+import { getStats } from '../../services';
 
 /**
  * LandingPage
@@ -16,6 +18,11 @@ import Footer from './Footer';
  */
 function LandingPage() {
   const navigate = useNavigate();
+  const [stats, setStats] = useState([]);
+
+  useEffect(() => {
+    getStats().then(setStats);
+  }, []);
 
   const goToLogin = () => navigate('/login');
   const goToRegister = () => navigate('/registro');
@@ -51,7 +58,7 @@ function LandingPage() {
           </div>
 
           {/* ── Barra de estadísticas e indicadores ────────── */}
-          <StatsBar />
+          <StatsBar stats={stats} />
         </section>
       </main>
 

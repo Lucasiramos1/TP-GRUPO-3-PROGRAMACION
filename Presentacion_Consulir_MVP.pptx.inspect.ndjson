@@ -1,0 +1,58 @@
+{"kind":"deck","id":"pr/y13ze3","name":"Deck"}
+{"kind":"layout","layoutId":"b37697c6-072d-41c0-b0ad-b632a37e3f62","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"70f609b3-4c23-455c-95f2-b66cd8bbbb7d","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/90iksk","slide":1,"title":"INFORME PARA LA CÁTEDRA","textShapes":4}
+{"kind":"textbox","id":"sh/3epkfexk","slide":1,"text":"INFORME PARA LA CÁTEDRA","textPreview":"INFORME PARA LA CÁTEDRA","textChars":23,"textLines":1,"bbox":[72,64,600,30]}
+{"kind":"shape","id":"sh/4zylozy5","slide":1,"bbox":[72,118,1136,2]}
+{"kind":"textbox","id":"sh/p072h4fq","slide":1,"text":"Consulir\nApp","textPreview":"Consulir | App","textChars":12,"textLines":2,"bbox":[72,206,890,190]}
+{"kind":"textbox","id":"sh/q1g3q9gb","slide":1,"text":"Estado actual del MVP\ny alcance del próximo sprint","textPreview":"Estado actual del MVP | y alcance del próximo sprint","textChars":50,"textLines":2,"bbox":[72,462,610,96]}
+{"kind":"textbox","id":"sh/r2pkjexw","slide":1,"text":"Aplicación web de finanzas personales","textPreview":"Aplicación web de finanzas personales","textChars":37,"textLines":1,"bbox":[72,610,620,30]}
+{"kind":"notes","id":"nt/90iksk","slide":1,"text":""}
+{"kind":"slide","id":"sl/b1jc70","slide":2,"title":"Objetivo de la aplicación","textShapes":4}
+{"kind":"textbox","id":"sh/x0zatwju","slide":2,"text":"Objetivo de la aplicación","textPreview":"Objetivo de la aplicación","textChars":25,"textLines":1,"bbox":[72,64,1100,52]}
+{"kind":"shape","id":"sh/ax8ri1k3","slide":2,"bbox":[72,145,1136,2]}
+{"kind":"textbox","id":"sh/byhsr61o","slide":2,"text":"Consulir es una aplicación web de finanzas personales orientada a que los usuarios gestionen ingresos, egresos y resultados mensuales.","textPreview":"Consulir es una aplicación web de finanzas personales orientada a que los usuarios gestionen ingresos, egresos y resultados mensuales.","textChars":134,"textLines":1,"bbox":[72,270,920,140]}
+{"kind":"textbox","id":"sh/knatob2l","slide":2,"text":"MVP de finanzas personales","textPreview":"MVP de finanzas personales","textChars":26,"textLines":1,"bbox":[72,520,620,36]}
+{"kind":"textbox","id":"sh/lojaxgjq","slide":2,"text":"TP-GRUPO-3-PROGRAMACION  |  02","textPreview":"TP-GRUPO-3-PROGRAMACION  |  02","textChars":30,"textLines":1,"bbox":[72,670,1136,20]}
+{"kind":"notes","id":"nt/b1jc70","slide":2,"text":""}
+{"kind":"slide","id":"sl/7pwxri","slide":3,"title":"Funcionalidades implementadas hasta el momento","textShapes":14}
+{"kind":"textbox","id":"sh/d0rmdgry","slide":3,"text":"Funcionalidades implementadas hasta el momento","textPreview":"Funcionalidades implementadas hasta el momento","textChars":46,"textLines":1,"bbox":[72,64,1150,52]}
+{"kind":"shape","id":"sh/qd03il87","slide":3,"bbox":[72,145,1136,2]}
+{"kind":"textbox","id":"sh/be94bq9s","slide":3,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[72,205,25,30]}
+{"kind":"textbox","id":"sh/03ilovq9","slide":3,"text":"Landing page con información institucional, navegación y estadísticas simuladas.","textPreview":"Landing page con información institucional, navegación y estadísticas simuladas.","textChars":80,"textLines":1,"bbox":[104,205,500,105]}
+{"kind":"textbox","id":"sh/l4bmh0ru","slide":3,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[72,347,25,30]}
+{"kind":"textbox","id":"sh/y103ml8j","slide":3,"text":"Pantallas de inicio de sesión y registro de usuarios.","textPreview":"Pantallas de inicio de sesión y registro de usuarios.","textChars":53,"textLines":1,"bbox":[104,347,500,105]}
+{"kind":"textbox","id":"sh/z294fq9o","slide":3,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[72,489,25,30]}
+{"kind":"textbox","id":"sh/g7ylcrq5","slide":3,"text":"Validaciones básicas en formularios, mensajes de error y estado de carga.","textPreview":"Validaciones básicas en formularios, mensajes de error y estado de carga.","textChars":73,"textLines":1,"bbox":[104,489,500,105]}
+{"kind":"textbox","id":"sh/18725wrq","slide":3,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[670,205,25,30]}
+{"kind":"textbox","id":"sh/x0n65wji","slide":3,"text":"Elementos iniciales de accesibilidad en autenticación: etiquetas asociadas a campos, atributos ARIA y controles navegables por teclado.","textPreview":"Elementos iniciales de accesibilidad en autenticación: etiquetas asociadas a campos, atributos ARIA y controles navegables por teclado.","textChars":135,"textLines":1,"bbox":[702,205,500,105]}
+{"kind":"textbox","id":"sh/wze5wr2x","slide":3,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[670,347,25,30]}
+{"kind":"textbox","id":"sh/by5o3m1c","slide":3,"text":"Estructura modular del proyecto con componentes, páginas, rutas y servicios.","textPreview":"Estructura modular del proyecto con componentes, páginas, rutas y servicios.","textChars":76,"textLines":1,"bbox":[702,347,500,105]}
+{"kind":"textbox","id":"sh/axcnuhkr","slide":3,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[670,489,25,30]}
+{"kind":"textbox","id":"sh/54n69gje","slide":3,"text":"Dashboard y rutas protegidas definidos como base, aunque todavía son temporales y sin autenticación real.","textPreview":"Dashboard y rutas protegidas definidos como base, aunque todavía son temporales y sin autenticación real.","textChars":105,"textLines":1,"bbox":[702,489,500,105]}
+{"kind":"textbox","id":"sh/k3e50bi9","slide":3,"text":"TP-GRUPO-3-PROGRAMACION  |  03","textPreview":"TP-GRUPO-3-PROGRAMACION  |  03","textChars":30,"textLines":1,"bbox":[72,670,1136,20]}
+{"kind":"notes","id":"nt/7pwxri","slide":3,"text":""}
+{"kind":"slide","id":"sl/uauv64","slide":4,"title":"Funcionalidades a abarcar","textShapes":14}
+{"kind":"textbox","id":"sh/bm1ojm50","slide":4,"text":"Funcionalidades a abarcar\nen el próximo sprint","textPreview":"Funcionalidades a abarcar | en el próximo sprint","textChars":46,"textLines":2,"bbox":[72,52,1136,95]}
+{"kind":"shape","id":"sh/cna5srml","slide":4,"bbox":[72,170,1136,2]}
+{"kind":"textbox","id":"sh/xoj6lwn6","slide":4,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[72,205,25,30]}
+{"kind":"textbox","id":"sh/2x8nmh4j","slide":4,"text":"Crear el formulario de registro de ingresos.","textPreview":"Crear el formulario de registro de ingresos.","textChars":44,"textLines":1,"bbox":[104,205,500,105]}
+{"kind":"textbox","id":"sh/nyhofm54","slide":4,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[72,347,25,30]}
+{"kind":"textbox","id":"sh/ojq5o7m9","slide":4,"text":"Incorporar campos de monto, fecha y concepto o descripción.","textPreview":"Incorporar campos de monto, fecha y concepto o descripción.","textChars":59,"textLines":1,"bbox":[104,347,500,105]}
+{"kind":"textbox","id":"sh/pkz6hcnu","slide":4,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[72,489,25,30]}
+{"kind":"textbox","id":"sh/mts7y14n","slide":4,"text":"Agregar un botón para guardar el ingreso y la lógica de validación correspondiente.","textPreview":"Agregar un botón para guardar el ingreso y la lógica de validación correspondiente.","textChars":83,"textLines":1,"bbox":[104,489,500,105]}
+{"kind":"textbox","id":"sh/7ulor658","slide":4,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[670,205,25,30]}
+{"kind":"textbox","id":"sh/369kvqh4","slide":4,"text":"Asegurar accesibilidad completa en este formulario: etiquetas visibles/asociadas, foco perceptible y navegación mediante teclado.","textPreview":"Asegurar accesibilidad completa en este formulario: etiquetas visibles/asociadas, foco perceptible y navegación mediante teclado.","textChars":129,"textLines":1,"bbox":[702,205,500,105]}
+{"kind":"textbox","id":"sh/250j2l0z","slide":4,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[670,347,25,30]}
+{"kind":"textbox","id":"sh/p8r2xgza","slide":4,"text":"Mostrar los ingresos registrados en el dashboard.","textPreview":"Mostrar los ingresos registrados en el dashboard.","textChars":49,"textLines":1,"bbox":[702,347,500,105]}
+{"kind":"textbox","id":"sh/o7i14bip","slide":4,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[670,489,25,30]}
+{"kind":"textbox","id":"sh/ba9kzqhg","slide":4,"text":"Avanzar en la integración con backend para persistir usuarios y movimientos financieros.","textPreview":"Avanzar en la integración con backend para persistir usuarios y movimientos financieros.","textChars":88,"textLines":1,"bbox":[702,489,500,105]}
+{"kind":"textbox","id":"sh/q90j6l0v","slide":4,"text":"TP-GRUPO-3-PROGRAMACION  |  04","textPreview":"TP-GRUPO-3-PROGRAMACION  |  04","textChars":30,"textLines":1,"bbox":[72,670,1136,20]}
+{"kind":"notes","id":"nt/uauv64","slide":4,"text":""}
+{"kind":"slide","id":"sl/wnffng","slide":5,"title":"PRÓXIMO HITO","textShapes":4}
+{"kind":"textbox","id":"sh/cb29srm5","slide":5,"text":"PRÓXIMO HITO","textPreview":"PRÓXIMO HITO","textChars":12,"textLines":1,"bbox":[72,64,500,30]}
+{"kind":"shape","id":"sh/bat8jmlk","slide":5,"bbox":[72,118,1136,2]}
+{"kind":"textbox","id":"sh/a9krqh4z","slide":5,"text":"Del acceso\nal movimiento","textPreview":"Del acceso | al movimiento","textChars":24,"textLines":2,"bbox":[72,206,920,190]}
+{"kind":"textbox","id":"sh/l0vapw3m","slide":5,"text":"La siguiente entrega transforma la base actual\nen gestión financiera real.","textPreview":"La siguiente entrega transforma la base actual | en gestión financiera real.","textChars":74,"textLines":2,"bbox":[72,492,690,85]}
+{"kind":"textbox","id":"sh/kfm9wrm1","slide":5,"text":"TP-GRUPO-3-PROGRAMACION  |  05","textPreview":"TP-GRUPO-3-PROGRAMACION  |  05","textChars":30,"textLines":1,"bbox":[72,670,1136,20]}
+{"kind":"notes","id":"nt/wnffng","slide":5,"text":""}

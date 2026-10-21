@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   validateRegisterField,
   validateRegisterForm,
 } from "../../utils/authValidations";
+import { registerUser } from "../../services/authService";
 import "./RegisterForm.css";
 
 const initialFormData = {
@@ -12,6 +14,8 @@ const initialFormData = {
 };
 
 export default function RegisterForm() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
@@ -20,7 +24,6 @@ export default function RegisterForm() {
   const [generalError, setGeneralError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
- 
   const formErrors = validateRegisterForm(formData);
   const isFormValid = Object.keys(formErrors).length === 0;
 
@@ -55,15 +58,22 @@ export default function RegisterForm() {
 
     const fieldError = validateRegisterField(name, value);
 
-setErrors((prevErrors) => ({
-  ...prevErrors,
-  [name]: fieldError,
-}));
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: fieldError,
+    }));
   };
 
   const getInputClassName = (fieldName) => {
-    if (errors[fieldName]) return "form-input input-error";
-    if (touched[fieldName] && !errors[fieldName] && formData[fieldName]) {
+    if (errors[fieldName]) {
+      return "form-input input-error";
+    }
+
+    if (
+      touched[fieldName] &&
+      !errors[fieldName] &&
+      formData[fieldName]
+    ) {
       return "form-input input-success";
     }
 
@@ -86,37 +96,50 @@ setErrors((prevErrors) => ({
     setGeneralError("");
 
     if (Object.keys(validationErrors).length > 0) {
-      setGeneralError("Revisá los campos marcados antes de continuar.");
+      setGeneralError(
+        "Revisá los campos marcados antes de continuar.",
+      );
       return;
     }
 
     try {
       setIsLoading(true);
 
-      /*
-        Simulación de petición HTTP.
-        Cuando exista backend, reemplazar este bloque por fetch o axios.
+      const { error, fieldErrors } = await registerUser({
+        nombre: formData.nombre.trim(),
+        email: formData.email.trim(),
+        password: formData.password,
+      });
 
-        Ejemplo:
-        const response = await fetch("http://localhost:3000/api/auth/register", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
-
-        if (!response.ok) {
-          throw new Error("No se pudo crear la cuenta.");
+      if (error) {
+        if (fieldErrors) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            ...fieldErrors,
+          }));
         }
-      */
 
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+        setGeneralError(error);
+        return;
+      }
 
-      setSuccessMessage("Cuenta creada correctamente. Redirigiendo...");
       setFormData(initialFormData);
       setTouched({});
       setErrors({});
-    } catch {
-      setGeneralError("Ocurrió un error al crear la cuenta. Intentá nuevamente.");
+
+      setSuccessMessage(
+        "Cuenta creada correctamente. Redirigiendo al inicio de sesión...",
+      );
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 800);
+    } catch (error) {
+      console.error("Error al registrar usuario:", error);
+
+      setGeneralError(
+        "Ocurrió un error al crear la cuenta. Intentá nuevamente.",
+      );
     } finally {
       setIsLoading(false);
     }
@@ -127,25 +150,43 @@ setErrors((prevErrors) => ({
       <div className="register-card">
         <div className="register-header">
           <p className="brand-label">Consulir</p>
+
           <h1>Crea tu cuenta</h1>
-          <p>Unite a Consulir y gestioná tus finanzas con precisión profesional.</p>
+
+          <p>
+            Unite a Consulir y gestioná tus finanzas con precisión
+            profesional.
+          </p>
         </div>
 
         {generalError && (
-          <div className="alert alert-error" role="alert">
+          <div
+            className="alert alert-error"
+            role="alert"
+          >
             {generalError}
           </div>
         )}
 
         {successMessage && (
-          <div className="alert alert-success" role="status">
+          <div
+            className="alert alert-success"
+            role="status"
+          >
             {successMessage}
           </div>
         )}
 
-        <form className="register-form" onSubmit={handleSubmit} noValidate>
+        <form
+          className="register-form"
+          onSubmit={handleSubmit}
+          noValidate
+          aria-busy={isLoading}
+        >
           <div className="form-group">
-            <label htmlFor="nombre">Nombre completo</label>
+            <label htmlFor="nombre">
+              Nombre completo
+            </label>
 
             <input
               id="nombre"
@@ -158,18 +199,27 @@ setErrors((prevErrors) => ({
               disabled={isLoading}
               className={getInputClassName("nombre")}
               aria-invalid={Boolean(errors.nombre)}
-              aria-describedby={errors.nombre ? "nombre-error" : undefined}
+              aria-describedby={
+                errors.nombre
+                  ? "nombre-error"
+                  : undefined
+              }
             />
 
             {errors.nombre && (
-              <small id="nombre-error" className="field-error">
+              <small
+                id="nombre-error"
+                className="field-error"
+              >
                 {errors.nombre}
               </small>
             )}
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">Correo electrónico</label>
+            <label htmlFor="email">
+              Correo electrónico
+            </label>
 
             <input
               id="email"
@@ -182,53 +232,89 @@ setErrors((prevErrors) => ({
               disabled={isLoading}
               className={getInputClassName("email")}
               aria-invalid={Boolean(errors.email)}
-              aria-describedby={errors.email ? "email-error" : undefined}
+              aria-describedby={
+                errors.email
+                  ? "email-error"
+                  : undefined
+              }
             />
 
             {errors.email && (
-              <small id="email-error" className="field-error">
+              <small
+                id="email-error"
+                className="field-error"
+              >
                 {errors.email}
               </small>
             )}
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Contraseña</label>
+            <label htmlFor="password">
+              Contraseña
+            </label>
 
             <div className="password-wrapper">
               <input
                 id="password"
                 name="password"
-                type={showPassword ? "text" : "password"}
+                type={
+                  showPassword
+                    ? "text"
+                    : "password"
+                }
                 placeholder="Mínimo 8 caracteres"
                 value={formData.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 disabled={isLoading}
-                className={getInputClassName("password")}
-                aria-invalid={Boolean(errors.password)}
-                aria-describedby={errors.password ? "password-error" : undefined}
+                className={getInputClassName(
+                  "password",
+                )}
+                aria-invalid={Boolean(
+                  errors.password,
+                )}
+                aria-describedby={
+                  errors.password
+                    ? "password-error"
+                    : undefined
+                }
               />
 
               <button
                 type="button"
                 className="password-toggle"
-                onClick={() => setShowPassword((prevValue) => !prevValue)}
+                onClick={() =>
+                  setShowPassword(
+                    (prevValue) => !prevValue,
+                  )
+                }
                 disabled={isLoading}
-                aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+                aria-label={
+                  showPassword
+                    ? "Ocultar contraseña"
+                    : "Mostrar contraseña"
+                }
               >
-                {showPassword ? "Ocultar" : "Ver"}
+                {showPassword
+                  ? "Ocultar"
+                  : "Ver"}
               </button>
             </div>
 
             {errors.password ? (
-              <small id="password-error" className="field-error">
+              <small
+                id="password-error"
+                className="field-error"
+              >
                 {errors.password}
               </small>
             ) : (
               touched.password &&
               formData.password && (
-                <small className="field-success">Contraseña segura.</small>
+                <small className="field-success">
+                  Contraseña segura.
+                </small>
               )
             )}
           </div>
@@ -236,11 +322,16 @@ setErrors((prevErrors) => ({
           <button
             type="submit"
             className="submit-button"
-            disabled={isLoading || !isFormValid}
+            disabled={
+              isLoading || !isFormValid
+            }
           >
             {isLoading ? (
               <span className="button-loading">
-                <span className="spinner" aria-hidden="true"></span>
+                <span
+                  className="spinner"
+                  aria-hidden="true"
+                />
                 Procesando...
               </span>
             ) : (

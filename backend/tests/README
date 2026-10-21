@@ -1,0 +1,64 @@
+# Testing del endpoint de registro — T-7
+
+## Objetivo
+
+Verificar el comportamiento del endpoint `POST /auth/register` mediante pruebas HTTP automatizadas y pruebas unitarias del servicio de autenticación con Supabase.
+
+## Herramientas
+
+- Vitest: ejecución y validación automatizada.
+- Supertest: solicitudes HTTP de prueba contra Express.
+- Mocks de Supabase: simulación de respuestas sin modificar usuarios reales.
+
+## Ejecución
+
+Desde la raíz del proyecto:
+
+```bash
+npm ci
+npm ci --prefix backend
+npm run test:backend
+```
+
+## Casos implementados
+
+**`auth.register.test.js` — 8 pruebas**
+
+- Registro válido: HTTP 201.
+- Exclusión de contraseñas y hashes de la respuesta.
+- Correo duplicado: HTTP 409 simulado.
+- Campos obligatorios faltantes: HTTP 400.
+- Formato de email inválido: HTTP 400.
+- Contraseña inválida: HTTP 400.
+- Cuerpo de solicitud vacío: HTTP 400.
+- Error interno: HTTP 500, sin exponer detalles sensibles.
+
+**`auth.service.test.js` — 4 pruebas**
+
+- Envío correcto de datos a Supabase Auth.
+- Normalización de nombre y correo.
+- Detección de correo duplicado.
+- Manejo de errores internos del servicio.
+
+## Resultados
+
+- 12 pruebas automatizadas aprobadas.
+- Build de producción exitoso.
+- Auditoría de dependencias del backend: 0 vulnerabilidades detectadas al momento de la verificación.
+- Prueba HTTP real de validación: respuesta 400 con código `VALIDATION_ERROR`.
+
+## Alcance y limitaciones
+
+Las pruebas automatizadas utilizan mocks y no ejecutan operaciones reales contra Supabase.
+
+No se verificó mediante estas pruebas la persistencia real de usuarios, ni se realizó una prueba de carga o de seguridad integral.
+
+La validación HTTP real se realizó sobre el caso de datos inválidos, sin crear usuarios.
+
+## Seguridad
+
+Se actualizaron dependencias vulnerables del backend con las correcciones compatibles propuestas por NPM. Las credenciales y variables de entorno privadas no deben incorporarse al repositorio.
+
+## Ticket
+
+T-7 — Issue #34.

@@ -1,12 +1,24 @@
+import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 import LoginForm from "../components/auth/LoginForm";
+import { loginUser } from "../services/authService";
 
 export default function LoginPage() {
+  const navigate = useNavigate();
+
   const handleLogin = async (credentials) => {
-    // Reemplazar por la petición HTTP del backend cuando esté disponible.
-    // await authService.login(credentials);
-    await new Promise((resolve) => setTimeout(resolve, 900));
-    return credentials;
+    try {
+      await loginUser(credentials);
+      navigate("/");
+    } catch (error) {
+      if (error?.message?.toLowerCase().includes("invalid login credentials")) {
+        throw new Error("El correo o la contraseña son incorrectos.", {
+          cause: error,
+        });
+      }
+
+      throw error;
+    }
   };
 
   return (
