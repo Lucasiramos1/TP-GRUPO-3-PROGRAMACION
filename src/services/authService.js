@@ -50,3 +50,12 @@ export async function loginUser({ email, password }) {
 
   return data;
 }
+
+export async function logoutUser() {
+  const supabase = getSupabaseClient();
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    throw error;
+  }
+}

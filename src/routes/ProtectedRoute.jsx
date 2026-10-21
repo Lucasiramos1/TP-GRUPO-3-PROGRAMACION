@@ -1,11 +1,24 @@
-// src/routes/ProtectedRoute.jsx
-import { Navigate } from 'react-router-dom';
+import PropTypes from "prop-types";
+import { Navigate, useLocation } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 function ProtectedRoute({ children }) {
-  // TODO: reemplazar por la lógica real de autenticación (T-14/T-15)
-  const isAuthenticated = true; // valor temporal hasta integrar sesión
+  const { session, isLoading } = useAuth();
+  const location = useLocation();
 
-  return isAuthenticated ? children : <Navigate to="/" replace />;
+  if (isLoading) {
+    return <main className="app-loading">Cargando tu cuenta...</main>;
+  }
+
+  return session ? (
+    children
+  ) : (
+    <Navigate to="/login" replace state={{ from: location.pathname }} />
+  );
 }
+
+ProtectedRoute.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default ProtectedRoute;
