@@ -20,12 +20,17 @@ export default function AuthProvider({ children }) {
       },
     );
 
-    supabase.auth.getSession().then(({ data }) => {
-      if (isMounted) {
-        setSession(data.session);
-        setIsLoading(false);
-      }
-    });
+    supabase.auth
+      .getSession()
+      .then(({ data }) => {
+        if (isMounted) setSession(data.session);
+      })
+      .catch(() => {
+        if (isMounted) setSession(null);
+      })
+      .finally(() => {
+        if (isMounted) setIsLoading(false);
+      });
 
     return () => {
       isMounted = false;

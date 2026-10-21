@@ -109,6 +109,8 @@ export default function Dashboard() {
 
   function handleMonthChange(event) {
     const nextMonth = event.target.value;
+    if (!nextMonth) return;
+
     setIsLoading(true);
     setError("");
     setMonth(nextMonth);
@@ -217,6 +219,7 @@ export default function Dashboard() {
           max={getCurrentMonth()}
           value={month}
           onChange={handleMonthChange}
+          required
         />
       </section>
 
