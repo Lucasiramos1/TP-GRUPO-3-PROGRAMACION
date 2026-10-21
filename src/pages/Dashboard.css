@@ -1,0 +1,394 @@
+.dashboard {
+  min-height: 100vh;
+  padding: 36px clamp(18px, 4vw, 64px) 64px;
+  background: #f3f6f5;
+  color: #243333;
+}
+
+.dashboard__header,
+.dashboard__toolbar,
+.dashboard__insight,
+.movements__heading,
+.transaction-form__actions {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard__header {
+  max-width: 1200px;
+  margin: 0 auto 24px;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.dashboard__header h1 {
+  margin: 4px 0;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.05;
+}
+
+.dashboard__brand {
+  margin: 0;
+  color: #147565;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+.dashboard__user {
+  margin: 0;
+  color: #647271;
+}
+
+.dashboard__error {
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  padding: 12px 16px;
+  border: 1px solid #efb0a8;
+  border-radius: 12px;
+  background: #fff1ef;
+  color: #8d291d;
+}
+
+.dashboard__toolbar {
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.dashboard__toolbar label {
+  font-weight: 600;
+}
+
+.dashboard input,
+.dashboard select,
+.dashboard textarea {
+  width: 100%;
+  border: 1px solid #c8d2d0;
+  border-radius: 10px;
+  background: #fff;
+  color: #243333;
+  font: inherit;
+}
+
+.dashboard input,
+.dashboard select {
+  min-height: 44px;
+  padding: 9px 11px;
+}
+
+.dashboard textarea {
+  padding: 11px;
+  resize: vertical;
+}
+
+.dashboard__toolbar input {
+  width: auto;
+}
+
+.summary-grid {
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.summary-card,
+.dashboard-card,
+.dashboard__insight {
+  border: 1px solid #dce4e2;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(27, 60, 54, 0.06);
+}
+
+.summary-card {
+  padding: 22px;
+  border-top: 4px solid #147565;
+}
+
+.summary-card--expense,
+.summary-card--negative {
+  border-top-color: #cc5948;
+}
+
+.summary-card--balance {
+  border-top-color: #3c7caa;
+}
+
+.summary-card span {
+  display: block;
+  margin-bottom: 8px;
+  color: #697776;
+  font-size: 0.9rem;
+}
+
+.summary-card strong {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+}
+
+.dashboard__insight {
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  gap: 16px;
+  padding: 20px 22px;
+  background: #e8f4f1;
+  border-color: #c9e2dd;
+}
+
+.dashboard__insight > span {
+  padding: 10px;
+  border-radius: 12px;
+  background: #147565;
+  color: #fff;
+}
+
+.dashboard__insight h2,
+.dashboard__insight p {
+  margin: 0;
+}
+
+.dashboard__insight h2 {
+  margin-bottom: 3px;
+  font-size: 1rem;
+}
+
+.dashboard__columns {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(290px, 0.78fr) minmax(380px, 1.22fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.dashboard-card {
+  padding: clamp(20px, 3vw, 28px);
+}
+
+.dashboard-card h2 {
+  margin: 0 0 20px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 1.35rem;
+}
+
+.transaction-form {
+  display: grid;
+  gap: 16px;
+}
+
+.transaction-form > label {
+  display: grid;
+  gap: 7px;
+  font-weight: 600;
+}
+
+.transaction-form > label span {
+  color: #778381;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.transaction-form__kind {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 18px;
+  border: 0;
+}
+
+.transaction-form__kind legend {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.transaction-form__kind label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.transaction-form__kind input {
+  width: auto;
+  min-height: auto;
+}
+
+.transaction-form__actions {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.button {
+  min-height: 42px;
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.button--primary {
+  background: #147565;
+  color: #fff;
+}
+
+.button--ghost {
+  border-color: #bbc8c6;
+  background: transparent;
+  color: #31413f;
+}
+
+.movements__heading {
+  justify-content: space-between;
+}
+
+.movements__heading span {
+  min-width: 30px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #e8f4f1;
+  color: #147565;
+  text-align: center;
+  font-weight: 700;
+}
+
+.movements,
+.movements__empty {
+  margin: 0;
+}
+
+.movements {
+  padding: 0;
+  list-style: none;
+}
+
+.movements__empty {
+  padding: 32px 12px;
+  color: #6d7978;
+  text-align: center;
+}
+
+.movement {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  padding: 16px 0;
+  align-items: center;
+  border-bottom: 1px solid #e8edec;
+}
+
+.movement:last-child {
+  border-bottom: 0;
+}
+
+.movement__icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+}
+
+.movement__icon--income {
+  background: #e1f2ee;
+  color: #147565;
+}
+
+.movement__icon--expense {
+  background: #ffebe8;
+  color: #b43f30;
+}
+
+.movement__details {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.movement__details span,
+.movement__details time {
+  overflow: hidden;
+  color: #778381;
+  font-size: 0.82rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.movement__amount--income {
+  color: #147565;
+}
+
+.movement__amount--expense {
+  color: #b43f30;
+}
+
+.movement__actions {
+  grid-column: 2 / -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.movement__actions button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #506361;
+  font: inherit;
+  font-size: 0.8rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .dashboard__columns,
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard__header {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 520px) {
+  .dashboard {
+    padding: 24px 14px 44px;
+  }
+
+  .dashboard__header {
+    flex-direction: column;
+  }
+
+  .dashboard__toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .dashboard__toolbar input {
+    width: 100%;
+  }
+
+  .movement {
+    grid-template-columns: auto 1fr;
+  }
+
+  .movement__amount {
+    grid-column: 2;
+  }
+
+  .movement__actions {
+    grid-column: 2;
+    justify-content: flex-start;
+  }
+}
