@@ -15,6 +15,19 @@ npm install
 
 ```
 
+### Configuración de autenticación
+
+Para habilitar el registro e inicio de sesión con Supabase, copiá `.env.example`
+como `.env.local` y completá sus valores:
+
+```bash
+VITE_SUPABASE_URL=https://tu-proyecto.supabase.co
+VITE_SUPABASE_ANON_KEY=tu-clave-anon-publica
+```
+
+La clave debe ser la clave pública `anon` del proyecto de Supabase. No agregues
+claves privadas ni `service_role` al frontend.
+
 ---
 
 ## 🖥️ Ejecución del servidor de desarrollo
@@ -66,6 +79,25 @@ src/
 | **`services/`** | Funciones encargadas de la comunicación con la API externa (`fetch`, `axios`, manejo de endpoints). Aísla la lógica de red del resto de la aplicación. |
 | **`routes/`** | Configuración del enrutamiento con React Router, incluyendo rutas públicas y protegidas, y la lógica de control de acceso. |
 | **`pages/`** | Vistas completas que se renderizan a través del router, componiendo distintos `components/` y `hooks/`. |
+
+---
+
+## API interna temporal
+
+Mientras el backend no esté disponible, `GET /stats` se representa mediante el mock `getStats` en `src/services/statsService.js`.
+
+Respuesta esperada:
+
+```json
+[
+  { "value": "15k+", "label": "CLIENTES ACTIVOS" },
+  { "value": "$4.2B", "label": "ACTIVOS GESTIONADOS" },
+  { "value": "99.9%", "label": "TIEMPO DE ACTIVIDAD" },
+  { "value": "24/7", "label": "SOPORTE PREMIUM" }
+]
+```
+
+Cada elemento debe incluir `value` y `label` como cadenas. Al implementar el backend, `getStats` debe reemplazarse por la petición al endpoint `GET /stats` sin modificar el contrato que consume `StatsBar`.
 
 ---
 

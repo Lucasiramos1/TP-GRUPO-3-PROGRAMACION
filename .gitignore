@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+.tmp/
+*.inspect.ndjson
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +24,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# Supabase / variables de entorno
+.env
+.env.local
+.env.*.local
+*.env
